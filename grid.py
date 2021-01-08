@@ -52,7 +52,7 @@ class Grid:
                         self.grid[x][y] = int(chr(event.key))
                         return
 
-                    # pygame starts by 1 and finish by 0, assholes
+                    # pygame starts by 1 and finish by 0
                     if pygame.K_KP1 <= event.key < pygame.K_KP0:
                         self.grid[x][y] = event.key - pygame.K_KP1 + 1   # simulates KP0
                         return
