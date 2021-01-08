@@ -4,6 +4,8 @@ import pygame
 from constants import LENGTHWIN, WIDTHWIN, WHITE
 from grid import Grid
 
+pygame.init()
+
 WIN = pygame.display.set_mode((LENGTHWIN, WIDTHWIN))
 clock = pygame.time.Clock()
 grid = Grid(WIN)
