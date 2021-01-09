@@ -34,5 +34,13 @@ def main():
                 pos = pygame.mouse.get_pos()
                 grid.caseClique(pos)
 
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_s:
+                    grid.solve()
+                if event.key == pygame.K_c:
+                    grid.clear()
+
+
+
 
 main()
