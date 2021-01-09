@@ -1,4 +1,6 @@
 # sudoku
 un solveur de sudoku sur pygame
 
-pour l'instant, on peut juste ajouter des nombres
+Faut quand même faire attention à ne pas rentrer des valeurs
+illégales car le solveur va effacer toute la grille si ça lui
+plaît pas
