@@ -35,12 +35,11 @@ class Grid:
                     pygame.draw.line(self.win, BLACK, start, end, 5)
 
 
-    #TODO refaire les x et les y, là on y comprend rien
     def caseClique(self, pos):
-        y, x = [coord // self.taille for coord in pos]
+        x, y = [coord // self.taille for coord in pos]
 
         # make the grey thing (cf. drawNumber())
-        self.drawGrey(y,x)
+        self.drawGrey(x,y)
         self.draw()
         pygame.display.update()
 
@@ -49,20 +48,20 @@ class Grid:
                 if event.type == pygame.KEYDOWN:
                     # < 255, otherwise, it crashes
                     if event.key < 255 and chr(event.key).isnumeric():
-                        self.grid[x][y] = int(chr(event.key))
+                        self.grid[y][x] = int(chr(event.key))
                         return
 
                     # pygame starts by 1 and finish by 0
                     if pygame.K_KP1 <= event.key < pygame.K_KP0:
-                        self.grid[x][y] = event.key - pygame.K_KP1 + 1   # simulates KP0
+                        self.grid[y][x] = event.key - pygame.K_KP1 + 1   # simulates KP0
                         return
 
                     elif event.key not in [pygame.K_LSHIFT, pygame.K_LCTRL]:
-                        self.grid[x][y] = 0
+                        self.grid[y][x] = 0
                         return
 
                 if event.type == pygame.MOUSEBUTTONDOWN:
-                    self.grid[x][y] = 0
+                    self.grid[y][x] = 0
                     return
 
     def drawNumber(self, x, y):
