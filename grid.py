@@ -112,20 +112,7 @@ class Grid:
             self.solved_grid = np.copy(self.grid)
             self.solved = True
 
-    def isValid(self):
-        """ this check if the given grid is legal or not """
-        for y in range(9):
-            for x in range(9):
-                nb = self.grid[y, x]
-                if nb != 0:
-                    if not self.isplacable(y, x, nb):
-                        return False
-        return True
-
     def solve(self):
-        if not self.isValid():
-            self.clear()
-            return
         self.__solve()
         self.grid = np.copy(self.solved_grid)
 
