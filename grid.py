@@ -90,7 +90,7 @@ class Grid:
             return True
         return False
 
-    def __solve(self):
+    def solve(self):
         """ the actual fonction to solve """
         if self.solved:
             return
@@ -101,20 +101,16 @@ class Grid:
                     for n in range(1, 10):
                         if self.isplacable(y, x, n):
                             self.grid[y, x] = n
-                            self.__solve()
-                            self.grid[y, x] = 0
+                            self.solve()
+                            if not self.solved:
+                                self.grid[y, x] = 0
                     # if we arrive here, it means that we couldn't place any of the nine numbers
                     # so we go back one step in recursion
                     return
 
         print("finished solving")
         if not self.solved:
-            self.solved_grid = np.copy(self.grid)
             self.solved = True
-
-    def solve(self):
-        self.__solve()
-        self.grid = np.copy(self.solved_grid)
 
 
     def clear(self):
