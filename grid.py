@@ -90,7 +90,7 @@ class Grid:
             return True
         return False
 
-    def solve(self):
+    def __solve(self):
         """ the actual fonction to solve """
         if self.solved:
             return
@@ -101,7 +101,7 @@ class Grid:
                     for n in range(1, 10):
                         if self.isplacable(y, x, n):
                             self.grid[y, x] = n
-                            self.solve()
+                            self.__solve()
                             if not self.solved:
                                 self.grid[y, x] = 0
                     # if we arrive here, it means that we couldn't place any of the nine numbers
@@ -111,6 +111,10 @@ class Grid:
         print("finished solving")
         if not self.solved:
             self.solved = True
+
+    def solve(self):
+        self.solved = False
+        self.__solve()
 
 
     def clear(self):
