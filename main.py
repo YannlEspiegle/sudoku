@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-
 import pygame
 from constants import LENGTHWIN, WIDTHWIN, WHITE
 from grid import Grid
