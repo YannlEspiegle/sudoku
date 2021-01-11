@@ -1,6 +1,7 @@
 import pygame
+import time
 import numpy as np
-from constants import TAILLE, BLACK, GREY, LENGTHWIN
+from constants import TAILLE, BLACK, GREY, LENGTHWIN, WHITE
 
 
 class Grid:
@@ -11,6 +12,7 @@ class Grid:
         self.taille = TAILLE
         self.grid = np.zeros((9, 9), int)
         self.solved = False
+        self.wait = False
 
     def __str__(self):
         return str(self.grid)
@@ -92,8 +94,6 @@ class Grid:
 
     def __solve(self):
         """ the actual fonction to solve """
-        if self.solved:
-            return
 
         for y in range(9):
             for x in range(9):
@@ -101,6 +101,13 @@ class Grid:
                     for n in range(1, 10):
                         if self.isplacable(y, x, n):
                             self.grid[y, x] = n
+
+                            if self.wait:
+                                self.win.fill(WHITE)
+                                self.draw()
+                                pygame.display.update()
+                                time.sleep(0.01)
+
                             self.__solve()
                             if not self.solved:
                                 self.grid[y, x] = 0
@@ -116,6 +123,11 @@ class Grid:
         self.solved = False
         self.__solve()
 
+    def solve_wait(self):
+        self.solved = False
+        self.wait = True
+        self.__solve()
+        self.wait = False
 
     def clear(self):
         self.grid = np.zeros_like(self.grid)

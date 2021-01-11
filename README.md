@@ -15,5 +15,6 @@ plaît pas
 # commandes
 - On clique sur une case puis on rentre un chiffre (facile celui-là)
 - **S** pour résoudre le Sudoku
+- **F** pour résoudre la grille en voyant tout ce que fait le programme
 - **C** pour effacer la grille
 - **NE RENTREZ PAS DE GRILLE ILLEGALE** (ça fait pas crash, mais vous allez sûrement attendre longtemps, ou pas)
