@@ -1,12 +1,12 @@
 import pygame
 import time
 import numpy as np
-from constants import TAILLE, BLACK, GREY, LENGTHWIN, WHITE
+from constants import TAILLE, BLACK, GREY, LENGTHWIN, WHITE, FONTSIZE
 
 
 class Grid:
     def __init__(self, win):
-        self.font = pygame.font.Font("ressources/Ubuntu-Bold.ttf", 90)
+        self.font = pygame.font.Font("ressources/Ubuntu-Bold.ttf", FONTSIZE)
         self.win = win
         self.tailleWin = LENGTHWIN
         self.taille = TAILLE
@@ -106,7 +106,7 @@ class Grid:
                                 self.win.fill(WHITE)
                                 self.draw()
                                 pygame.display.update()
-                                time.sleep(0.01)
+                                #time.sleep(0.01)
 
                             self.__solve()
                             if not self.solved:
@@ -119,14 +119,30 @@ class Grid:
         if not self.solved:
             self.solved = True
 
+    def check(self):
+        res = True
+        """check if the grid is legal, just basically"""
+        for y in range(9):
+            for x in range(9):
+                nombre = self.grid[y, x]
+                if nombre != 0:
+                    self.grid[y, x] = 0
+                    if not self.isplacable(y, x, nombre):
+                        if res:
+                            print("========= ERREUR =========")
+                        print(f"Erreur: ligne {y+1}, colonne {x+1}")
+                        res = False
+                    self.grid[y, x] = nombre
+        return res
+
     def solve(self):
-        self.solved = False
-        self.__solve()
+        if self.check():
+            self.solved = False
+            self.__solve()
 
     def solve_wait(self):
-        self.solved = False
         self.wait = True
-        self.__solve()
+        self.solve()
         self.wait = False
 
     def clear(self):
