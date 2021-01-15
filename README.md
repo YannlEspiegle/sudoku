@@ -1,11 +1,6 @@
 # sudoku
 un solveur de sudoku sur pygame
 
-Faut quand même faire attention à ne pas rentrer des valeurs
-
-illégales car le solveur va effacer toute la grille si ça lui
-plaît pas
-
 # prérequis
 - Un interpréteur python
 - Si votre écran est plus petit que 900 pixel en hauter, il va falloir modifier le fichier `constants.py` et changer la première ligne
