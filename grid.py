@@ -1,5 +1,4 @@
 import pygame
-import time
 import numpy as np
 from constants import TAILLE, BLACK, GREY, LENGTHWIN, WHITE, FONTSIZE
 
@@ -109,7 +108,6 @@ class Grid:
                                 self.win.fill(WHITE)
                                 self.draw()
                                 pygame.display.update()
-                                # time.sleep(0.01)
 
                             self.__solve()
                             if not self.solved:
