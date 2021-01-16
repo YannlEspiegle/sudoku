@@ -37,12 +37,11 @@ class Grid:
                     end = (self.tailleWin, y * self.taille)
                     pygame.draw.line(self.win, BLACK, start, end, 5)
 
-
     def caseClique(self, pos):
         x, y = [coord // self.taille for coord in pos]
 
         # make the grey thing (cf. drawNumber())
-        self.drawGrey(x,y)
+        self.drawGrey(x, y)
         self.draw()
         pygame.display.update()
 
@@ -56,7 +55,7 @@ class Grid:
 
                     # pygame starts by 1 and finish by 0
                     if pygame.K_KP1 <= event.key < pygame.K_KP0:
-                        self.grid[y, x] = event.key - pygame.K_KP1 + 1   # simulates KP0
+                        self.grid[y, x] = event.key - pygame.K_KP1 + 1  # simulates KP0
                         return
 
                     elif event.key not in [pygame.K_LSHIFT, pygame.K_LCTRL]:
@@ -78,17 +77,21 @@ class Grid:
 
     def column(self, col):
         """ return a list of the column """
-        return [self.grid[i, col]for i in range(9)]
+        return [self.grid[i, col] for i in range(9)]
 
     def square(self, line, col):
         """ return the 3x3 square of coordonates"""
         prevLine = line - line % 3
         prevCol = col - col % 3
-        return self.grid[prevLine:prevLine+3, prevCol:prevCol+3]
+        return self.grid[prevLine : prevLine + 3, prevCol : prevCol + 3]
 
     def isplacable(self, line, col, x):
         """ check if the value X is placable in the coord line col"""
-        if x not in self.grid[line] and x not in self.column(col) and x not in self.square(line, col):
+        if (
+            x not in self.grid[line]
+            and x not in self.column(col)
+            and x not in self.square(line, col)
+        ):
             return True
         return False
 
@@ -106,7 +109,7 @@ class Grid:
                                 self.win.fill(WHITE)
                                 self.draw()
                                 pygame.display.update()
-                                #time.sleep(0.01)
+                                # time.sleep(0.01)
 
                             self.__solve()
                             if not self.solved:
