@@ -1,11 +1,13 @@
 import pygame
+import os
 import numpy as np
 from constants import TAILLE, BLACK, GREY, LENGTHWIN, WHITE, FONTSIZE
 
 
 class Grid:
     def __init__(self, win):
-        self.font = pygame.font.Font("ressources/Ubuntu-Bold.ttf", FONTSIZE)
+        fontDir = os.path.dirname(os.path.realpath(__file__)) + "/ressources/"
+        self.font = pygame.font.Font(fontDir + "Ubuntu-Bold.ttf", FONTSIZE)
         self.win = win
         self.tailleWin = LENGTHWIN
         self.taille = TAILLE

@@ -39,4 +39,6 @@ def main():
                     grid.clear()
                 if event.key == pygame.K_f:
                     grid.solve_wait()
+
+
 main()
