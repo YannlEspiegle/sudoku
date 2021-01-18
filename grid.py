@@ -68,7 +68,7 @@ class Grid:
                     return
 
     def drawNumber(self, x, y):
-        if self.grid[y][x] > 0:
+        if self.grid[y, x] > 0:
             label = self.font.render(str(self.grid[y][x]), 1, BLACK)
             self.win.blit(label, (x * self.taille + self.taille // 4, y * self.taille))
 
